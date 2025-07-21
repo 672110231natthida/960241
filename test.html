@@ -1,22 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pop man</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab HTML - Pop Man</title>
 </head>
 <body>
-    <h1>hello camt </h1>
-    <h2>hello camt </h2>
-    <h3>hello camt </h3>
 
-    <p  style="colour:red;">อยากเขียนเว็บได้ ไปฝึกงานเป็นเทพพพ </p>
+    <!-- หัวข้อ <h1> - <h3> -->
+    <h1>hello camt</h1>
+    <h2>hello camt</h2>
+    <h3>hello camt</h3>
 
-    <strong> <em>นักศึกษา</em> pop </strong>
+    <!-- ย่อหน้า พร้อม style -->
+    <p style="color:red;">อยากเขียนเว็บได้ ไปฝึกงานเป็นเทพพพ</p>
+
+    <!-- strong และ em -->
+    <strong><em>นักศึกษา</em> pop</strong>
+
+    <!-- ลิงก์คลิกเพื่อเปิดรูป -->
     <a href="C:\Users\Acer Aspire 3\Pictures\Screenshots" target="_blank">
-        <img src ="photo/Screenshot 2025-07-18 180210.png" alt="Screenshot" width="300" height="200">
+        <img src="photo/Screenshot 2025-07-18 180210.png" alt="Screenshot" width="300" height="200">
     </a>
 
+    <!-- รายการ ul -->
     <ul>
         <li>เรียนรู้ HTML</li>
         <li>เรียนรู้ CSS</li>
@@ -25,6 +32,7 @@
         <li>เข้าร่วมชุมชนออนไลน์</li>
     </ul>
 
+    <!-- รายการ ol เริ่มจาก 5 -->
     <ol start="5">
         <li>เรียนรู้ HTML</li>
         <li>เรียนรู้ CSS</li>
@@ -33,10 +41,11 @@
         <li>เข้าร่วมชุมชนออนไลน์</li>
     </ol>
 
+    <!-- ตาราง -->
     <table border="1" cellpadding="5" cellspacing="0">
         <tr>
-            <th colspan="2" rowspan="2">Name</th>
-            <th>Age</th>
+            <th colspan="2">ชื่อ</th>
+            <th>อายุ</th>
         </tr>
         <tr>
             <td>Jill</td>
@@ -50,13 +59,91 @@
         </tr>
     </table>
 
-    <form action="" method="get">
-        <label for="bdate">b date:</label>
-        <input type="date" id="bdate" name="bdate" placeholder="วันเกิด">
+    <!-- ฟอร์มข้อมูล -->
+    <h2>แบบฟอร์มลงทะเบียน</h2>
+    <form action="/sendLogin" method="post">
+        <label for="bdate">วันเกิด:</label>
+        <input type="date" id="bdate" name="bdate"><br>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" value="email" >
+        <label for="email">อีเมล:</label>
+        <input type="email" id="email" name="email"><br>
 
-        <label for="recom">แนะนำ</label>
+        <label for="recom">แนะนำตัว:</label><br>
+        <textarea id="recom" name="recom" rows="4" cols="30"></textarea><br>
+
+        <button type="submit">ส่ง</button>
+        <button type="reset">รีเซ็ต</button>
+    </form>
+
+    <hr>
+
+    <!-- ข้อ 2.2: ลิงก์ไปยัง CAMT -->
+    <a href="https://www.camt.cmu.ac.th/index.php/th/" target="_blank">ไปยังเว็บไซต์ CAMT</a><br>
+
+    <!-- ข้อ 2.3: ลิงก์โทร -->
+    <a href="tel:+6653217143">โทร: 053-217143</a><br>
+
+    <!-- ข้อ 2.4: ลิงก์ไปยัง section2 -->
+    <a href="#section2">ไปยัง Section 2</a><br><br>
+
+    <!-- ข้อ 2.5: รูปภาพ CMU -->
+    <img src="https://www.cmu.ac.th/content/Article/2023/7e6d8808-54b5-419d-b3da-99de6cce26f4/047c25cb-dee0-494e-b462-4f28f9e51ffd.jpg" alt="cmu" width="300"><br>
+
+    <!-- ข้อ 2.6: ที่อยู่ -->
+    <address>
+        239 ถนนห้วยแก้ว ตำบลสุเทพ อำเภอเมือง จังหวัดเชียงใหม่ 50200
+    </address>
+
+    <!-- ข้อ 2.7: หัวข้อ + ย่อหน้า -->
+    <h2>เกี่ยวกับฉัน</h2>
+    <p>ชื่อ pop นักศึกษาสาขาดิจิทัล สนใจการพัฒนาเว็บไซต์</p>
+
+    <!-- ข้อ 2.8: เครื่องเล่นเพลง -->
+    <audio controls>
+        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3" type="audio/mpeg">
+        เบราว์เซอร์ของคุณไม่รองรับการเล่นเสียง
+    </audio>
+
+    <!-- ข้อ 2.9: ตัวหนา -->
+    <p><b>นี่คือตัวอักษรหนา</b></p>
+
+    <!-- Section สำหรับลิงก์ภายใน -->
+    <div id="section2">
+        <h3>Section 2</h3>
+        <p>เนื้อหาของ Section 2 อยู่ที่นี่</p>
+    </div>
+
+    <hr>
+
+    <!-- แบบฝึกหัดข้อ 3: Login Form -->
+    <h2>Login</h2>
+    <form action="/sendLogin" method="post">
+        <label for="username">Username:</label>
+        <input type="email" id="username" name="username" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+
+        <button type="submit">Login</button>
+        <button type="reset">Reset</button>
+    </form>
+
+    <!-- ลิงก์ไปหน้า Sign In (ในไฟล์เดียวนี้ใช้ anchor จำลองแทน) -->
+    <p>ยังไม่มีบัญชี? <a href="#signin">ไปที่ Sign In</a></p>
+
+    <hr>
+
+    <!-- แบบฝึกหัดข้อ 3: Sign In Form -->
+    <h2 id="signin">Sign In</h2>
+    <form>
+        <label for="newuser">Username (Email):</label>
+        <input type="email" id="newuser" name="newuser" required><br>
+
+        <label for="newpass">Password:</label>
+        <input type="password" id="newpass" name="newpass" required><br>
+
+        <button type="submit">Sign In</button>
+    </form>
+
 </body>
 </html>
