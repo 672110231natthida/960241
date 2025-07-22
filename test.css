@@ -1,0 +1,56 @@
+.round-button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: white;
+      background-color: #0078FF;
+      border: none;
+      border-radius: 25px;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    
+    .round-button:hover {
+      background-color: #f43c3c;
+    }
+
+
+    @media (max-width: 600px) {
+      .round-button {
+        background-color: rgb(64, 81, 234);
+        border-radius: 0; 
+      }
+    }
+
+
+    /* Set grid area names */
+.header { grid-area: header; }
+.menu { grid-area: menu; }
+.main { grid-area: main; }
+.left { grid-area: left; }
+.right { grid-area: right; }
+.footer { grid-area: footer; }
+
+/* Grid layout */
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    "header header header header header header"
+    "menu   main   main   main   main   main"
+    "menu   left   left   right  right  right"
+    "footer footer footer footer footer footer";
+  gap: 5px;
+  background-color: red;
+  padding: 5px;
+}
+
+/* Child box styles */
+.grid-container > div {
+  background-color: #f0f0f0;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 20px;
+  border: 1px solid red;
+}
