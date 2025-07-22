@@ -25,7 +25,6 @@
     }
 
 
-    /* Set grid area names */
 .header { grid-area: header; }
 .menu { grid-area: menu; }
 .main { grid-area: main; }
@@ -33,7 +32,7 @@
 .right { grid-area: right; }
 .footer { grid-area: footer; }
 
-/* Grid layout */
+
 .grid-container {
   display: grid;
   grid-template-areas:
@@ -46,7 +45,7 @@
   padding: 5px;
 }
 
-/* Child box styles */
+
 .grid-container > div {
   background-color: #f0f0f0;
   text-align: center;
@@ -54,3 +53,41 @@
   font-size: 20px;
   border: 1px solid red;
 }
+
+.table1{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 10px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.table1-item{
+    background-color: #f0f0f0;
+    border: 1px solid #000000;
+    padding: 20px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.flex1{
+    display: flex;
+    background-color: dodgerblue;
+    flex-direction: row-reverse;
+}
+
+.item{
+  background-color: #0078FF;
+
+}
+flex-item {
+display: flex;
+flex-direction: row-reverse;
+display: inline-block;
+padding: 10px 20px;
+font-size: 16px;
+color: white;
+}
+
+
+
