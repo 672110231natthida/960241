@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Animation Example</title>
+            <style>
+                @keyframes blink {
+                    0%,100% { opacity: 1;}
+                    50% {opacity: 0;}
+                
+                }
+                .blink {
+                    width: 100px;
+                    height: 100px;
+                    background-color: red;
+                    animation: blink 1s infinite;
+                }
+
+                @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                }
+                .rotate-box {
+                    width: 100px;
+                    height: 100px;
+                    background-color: blue;
+                    margin: 50px;
+                    animation: spin 2s linear infinite;
+                }
+                @keyframes move-right {
+                    0% { left: 0px;}
+                    100% { left: 4000px;}
+                }
+                .container_move-box {
+                    position: relative;
+                    height: 100px;
+                    background-color: rgb(212, 111, 237);
+                   
+                }
+                .move-box {
+                    animation: move-right 10s ease-in-out infinite;
+                    width: 100px;
+                    height: 100px;
+                    background-color: purple;
+                    position: relative;
+                    left: 0px;
+                    right: 0px;
+                   
+                }
+
+                @keyframes color_change {
+                    0% { background-color: red; }
+                    35% { background-color: yellow; }
+                    66% { background-color: green; }
+                    100% { background-color: blue; }
+                }
+                .color-box {
+                    width: 100px;
+                    height: 100px;
+                    background-color: red;
+                    animation: color_change 3s infinite;
+                }
+            </style>
+    </head>
+    <body>
+        <div class="blink"></div>
+        <div class="rotate-box"></div>
+        <div class="color-box"></div>
+        <div class="container_move-box">
+            <div class="move-box"></div>
+    </body>
+</html>
