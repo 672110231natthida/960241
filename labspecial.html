@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>กลุ่มนักเรียนแบบรหัส 💖</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #fde2ff, #e0f7fa);
+    }
+  </style>
+</head>
+<body class="min-h-screen p-4">
+  <div class="max-w-3xl mx-auto bg-white/70 p-6 rounded-3xl shadow-xl backdrop-blur">
+    <h1 class="text-3xl font-extrabold text-pink-600 mb-6 text-center">✨ แบ่งกลุ่มนักเรียนตามรหัส ✨</h1>
+
+    <div class="grid sm:grid-cols-2 gap-4 mb-4">
+      <div>
+        <label class="block mb-1 font-medium text-purple-800">เลือก Section:</label>
+        <select id="section" class="w-full rounded-xl p-2 border border-purple-300">
+          <option value="1">Sec 1</option>
+          <option value="2">Sec 2</option>
+        </select>
+      </div>
+      <div>
+        <label class="block mb-1 font-medium text-purple-800">จำนวนคนต่อกลุ่ม:</label>
+        <input type="number" id="groupSize" class="w-full rounded-xl p-2 border border-purple-300" placeholder="เช่น 5" />
+      </div>
+    </div>
+
+    <div class="flex gap-4 flex-wrap mb-6">
+      <button onclick="handleGroup()" class="bg-pink-500 hover:bg-pink-600 text-white px-5 py-2 rounded-full shadow-md">🎲 สุ่มเลย!</button>
+      <button onclick="download('txt')" class="bg-blue-400 hover:bg-blue-500 text-white px-5 py-2 rounded-full shadow-md">⬇️ ดาวน์โหลด TXT</button>
+      <button onclick="download('csv')" class="bg-green-400 hover:bg-green-500 text-white px-5 py-2 rounded-full shadow-md">⬇️ ดาวน์โหลด CSV</button>
+    </div>
+
+    <div id="result" class="space-y-4 text-sm sm:text-base"></div>
+  </div>
+
+  <script>
+    const sec1 = [
+      "672110132","672110133","672110135","672110136","672110138","672110144",
+      "672110146","672110149","672110150","672110151","672110155","672110157",
+      "672110159","672110161","672110162","672110164","672110165","672110166",
+      "672110229","672110233","672110234","672110235","672110238","672110239",
+      "672110240","672110241","672110244"
+    ];
+
+    const sec2 = [
+      "672110134","672110137","672110139","672110140","672110141","672110142",
+      "672110145","672110147","672110148","672110152","672110153","672110154",
+      "672110156","672110158","672110160","672110163","672110225","672110226",
+      "672110228","672110231","672110232","672110236","672110242","672110243",
+      "672110245"
+    ];
+
+    let latestGroups = [];
+
+    function groupRandom(students, n) {
+      const shuffled = [...students].sort(() => Math.random() - 0.5);
+      const groups = [];
+      const baseGroupCount = Math.floor(shuffled.length / n);
+      const remainder = shuffled.length % n;
+      let index = 0;
+
+      for (let i = 0; i < baseGroupCount; i++) {
+        groups.push(shuffled.slice(index, index + n));
+        index += n;
+      }
+
+      for (let i = 0; i < remainder; i++) {
+        groups[i % groups.length].push(shuffled[index++]);
+      }
+
+      return groups;
+    }
+
+    function handleGroup() {
+      const sec = document.getElementById("section").value;
+      const size = parseInt(document.getElementById("groupSize").value);
+      if (!size || size <= 0) return alert("โปรดใส่จำนวนคนต่อกลุ่มให้ถูกต้องค่ะ");
+
+      const students = sec === "1" ? sec1 : sec2;
+      const groups = groupRandom(students, size);
+      latestGroups = groups;
+
+      const result = document.getElementById("result");
+      result.innerHTML = "";
+
+      groups.forEach((group, i) => {
+        const div = document.createElement("div");
+        div.className = "bg-white/80 p-4 rounded-xl shadow-md border border-pink-200";
+        div.innerHTML = `<strong>กลุ่มที่ ${i + 1}</strong>:<br>${group.join(", ")}`;
+        result.appendChild(div);
+      });
+    }
+
+    function download(type) {
+      if (!latestGroups.length) return alert("กรุณาสุ่มกลุ่มก่อนค่ะ");
+
+      let content = "";
+      latestGroups.forEach((group, i) => {
+        const line = `กลุ่มที่ ${i + 1}, ` + group.join(", ") + "\n";
+        content += line;
+      });
+
+      const blob = new Blob([content], { type: type === "csv" ? "text/csv" : "text/plain" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `กลุ่มรหัสนักเรียน.${type}`;
+      link.click();
+    }
+  </script>
+</body>
+</html>
