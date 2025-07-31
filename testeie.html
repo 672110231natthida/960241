@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <script>
+    function Person(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+
+    Person.prototype.greet = function() {
+      console.log("Hello");
+    }
+
+    let Person1 = new Person("Piyavach", 10);
+
+    console.log(Person1.hasOwnProperty("name")); // true
+    console.log("greet" in Person1); // true (inherited from prototype)
+
+    function Animal(name){
+      this.name = name;
+    }
+
+    // ต้องใช้ function() เพื่อให้ this อ้างถึง instance
+    Animal.prototype.speak = function() {
+      console.log("Animal " + this.name + " bra bra bra");
+    }
+
+    const a1 = new Animal("Dog");
+    a1.speak(); // Animal Dog bra bra bra
+
+    function Dog(name) {
+      Animal.call(this, name); // เรียก constructor ของ Animal
+    }
+
+    Dog.prototype = Object.create(Animal.prototype);
+    Dog.prototype.constructor = Dog;
+
+    Dog.prototype.bark = function() {
+      console.log("Animal " + this.name + " hog hog hog");
+    }
+
+    const d1 = new Dog("numchok");
+    d1.speak(); // สืบทอดจาก Animal
+    d1.bark();  // จาก Dog
+
+    console.log(Dog.prototype === Object.getPrototypeOf(d1)); // true
+  </script>
+</head>
+<body>
+</body>
+</html>
