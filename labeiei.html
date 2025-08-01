@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Label EIEI</title>
+    
+
+    <script>
+
+        function fetchData() {
+            const data = {name : "numchok" , age:3}
+
+            return new Promise((resolve=> {
+             
+                setTimeout(() => {
+                    resolve(data);
+                }, 2000);
+            }));
+
+        }
+
+        fetchData().then((data) => {
+            console.log(data);
+        }).catch((error) => {
+            console.error("Error", error);
+        });
+
+
+        async function getUserData () {
+            try {
+            const data = await fetchData();
+            console.log(data);
+        } catch (error) {
+            console.error("Error", error);
+        }
+        }
+        
+        function fetchUserdetil () {
+            return new Promise((resolve) =>{
+                setTimeout(() => {
+                    resolve([{ postID:1,title: "post1"},{ postID:2,title: "post2"}]);
+                }, 2000);
+            })
+        }
+    
+        async function getUserAndPost(params){
+            try {
+                const [userDatil, userPost] = await Promise.all([fetchData(), fetchUserdetil()]);
+                console.log(userDatil);
+                console.log(userPost);
+            } catch (error) {
+                console.error("Error", error);
+        }
+    }
+       // getUserData();
+        //getUserAndPost();   
+
+        async function fetchErr(){
+            throw new Error("This is an error");
+        }
+
+        async function handleError() {
+                    try {
+                        await fetchErr();
+                    } catch (error) {
+                        console.error (error);
+                    }
+        }
+
+       // handleError();
+         
+       const p1 = new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("p1")
+        },300);
+       })
+
+       const fail1 = Promise.reject("error1");
+       const fail2 = Promise.reject("error1");
+       const fail3 = Promise.reject("error1");
+
+       Promise.any([fail1,fail2,fail3]).then((r) => {
+        console.log(r);
+       }).catch((error) => {
+        console.error(error);
+       })
+
+       
+
+
+
+
+
+    </script>
+
+</html>
