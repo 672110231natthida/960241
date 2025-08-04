@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator V2</title>
+  <style>
+    body {
+      background-color: #222;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .calculator {
+      background-color: #111;
+      padding: 10px;
+      border-radius: 10px;
+      display: grid;
+      grid-template-columns: repeat(4, 60px);
+      grid-gap: 5px;
+    }
+    .calculator input {
+      grid-column: span 4;
+      height: 60px;
+      text-align: right;
+      font-size: 24px;
+      padding-right: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+    .calculator button {
+      height: 60px;
+      font-size: 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: green;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .calculator button:hover {
+      background-color: #0a0;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <input type="text" id="display" readonly>
+
+    <button onclick="append('(')">(</button>
+    <button onclick="append(')')">)</button>
+    <button onclick="undo()">Undo</button>
+    <button onclick="clearDisplay()">C</button>
+
+    <button onclick="append('1')">1</button>
+    <button onclick="append('2')">2</button>
+    <button onclick="append('3')">3</button>
+    <button onclick="append('/')">/</button>
+
+    <button onclick="append('4')">4</button>
+    <button onclick="append('5')">5</button>
+    <button onclick="append('6')">6</button>
+    <button onclick="append('*')">*</button>
+
+    <button onclick="append('7')">7</button>
+    <button onclick="append('8')">8</button>
+    <button onclick="append('9')">9</button>
+    <button onclick="append('-')">-</button>
+
+    <button onclick="append('0')">0</button>
+    <button onclick="append('.')">.</button>
+    <button onclick="calculate()">=</button>
+    <button onclick="append('+')">+</button>
+  </div>
+
+  <script src="calculatorV2.js"></script>
+</body>
+</html>
