@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Last Lab</title>
+    </head>
+<body>
+    <script>
+        function trainLinearRegression(x,y, learning_rate = 0.01, epoch = 1000) {
+            //y= mx +b
+            let m = 0; 
+            let b = 0;
+
+            const n = x.length;
+
+            for (let epoch = 0; epoch < epoch; epoch++) {
+
+                let dm = 0;
+                let db = 0;
+
+                for (let i = 0; i < n; i++) {
+                  const yPred = m * x[i] + b;
+                    const error = y[i]-  yPred ;
+
+                    dm = dm + (-2 )* x[i] * error ;
+                    db = db + (-2 * error);
+                }
+
+                m = m-(dm/n)*learning_rate;
+                b = b-(db/n)*learning_rate;
+
+                console.log(m+" "+b)
+            }
+
+            return {m:m, b:b};
+        }
+
+
+
+        const x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        const y = [2.1, 3.9, 6.2, 7.8, 10.1, 11.9, 13.8, 15.6, 17.9, 20.2]
+
+        console.log(trainLinearRegression(x,y,learning_rate = 0.01, epoch = 1000));
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
